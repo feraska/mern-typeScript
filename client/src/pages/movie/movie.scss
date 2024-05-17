@@ -1,0 +1,28 @@
+.movie {
+    margin-top: 100px;
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .item {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .genre {
+            display: flex;
+            gap: 20px;
+        }
+        .lang {
+            display: flex;
+            gap: 20px;
+        }
+        .images {
+            display: flex;
+            gap: 20px;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+}

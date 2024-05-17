@@ -1,0 +1,96 @@
+header {
+   
+}
+.scrolled {
+    background-color: black;
+}
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+    align-items: center;
+    .left {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+        .logout {
+            font-size: 26px;
+            cursor: pointer;
+        }
+        .logo {
+            margin-left: 25px;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            a {
+                font-size: 16px;
+                &:hover{
+                    background-color: red;
+                  }
+            }
+            li {
+                font-size: 18px;
+                color: #fff;
+            }
+        }
+    }
+    .right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .search {
+            display: flex;
+            gap: 5px;
+            margin-right: 50px;
+            background-color: transparent;
+           
+            .icon {
+                color: #fff;
+                margin-left: 5px;
+                font-size: 26px;
+                cursor: pointer;
+            }
+            input {
+              border: none;
+              outline: none;
+              background-color: transparent;
+              color: #fff;
+              font-size: 16px;
+              padding: 5px 0 5px 0;
+              transition: 0.3s ease-in-out;
+              background-color: transparent;
+             &::placeholder {
+                color: #fff;
+                font-size: 20px;
+             }
+              
+            }
+            .none {
+                opacity: 0;
+                width: 0;
+                
+            }
+            .visible {
+                width: 100%;
+                opacity: 1;
+                border: 1px solid #fff;
+            }
+        }
+    
+}
+
+
+
+}
+
