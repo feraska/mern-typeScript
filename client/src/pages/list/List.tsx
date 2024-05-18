@@ -3,13 +3,16 @@ import { AuthContext } from "../../context/AuthContext"
 import "./list.scss"
 import Navbar from "../../components/navbar/Navbar"
 import Footer from "../../components/footer/Footer"
-import { Navigate } from "react-router-dom"
+import { Navigate, useSearchParams } from "react-router-dom"
 import Loading from "../../components/loading/Loading"
 import useGlobal from "../../hooks/useGloabal"
 import ListItem from "../../components/listItem/ListItem"
+import Movie from "../movie/Movie"
 
 const List = ()=> {
     const {state} = useContext(AuthContext)
+    const [search] = useSearchParams()
+    const id = search.get("t")
    useGlobal()
    if(state.login === 2) {
     return<Loading/>
@@ -19,6 +22,7 @@ if(state.login === 0) {
 } 
     return(
         <>
+         {id&&<Movie/>}
         <Navbar/>
         <div className="list" >
             <h1>My List</h1>

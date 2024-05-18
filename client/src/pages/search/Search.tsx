@@ -7,8 +7,10 @@ import CardItem from "../../components/cardItem/CardItem"
 import Loading from "../../components/loading/Loading"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
+import Movie from "../movie/Movie"
 const Search = () => {
     const [search] = useSearchParams()
+    const id = search.get("t")
     const {state} = useContext(AuthContext)
     const {data} = useFilter(`https://api.themoviedb.org/3/movie/now_playing?page=${search.get("q")}`)
     if(state.login === 2) {
@@ -20,6 +22,7 @@ const Search = () => {
     } 
     return(
         <>
+         {id&&<Movie/>}
         <Navbar/>
         <div className="filter">
             <h1>Search</h1>

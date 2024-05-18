@@ -18,7 +18,6 @@ const Search = lazy(()=> import('./pages/search/Search'))
 
 function App() {
   
- 
  const router = createBrowserRouter([
   {
         path:"/",
@@ -61,10 +60,8 @@ function App() {
         path:"/search",
         element:<Suspense fallback={<Loading/>}><Search/></Suspense>,
       },
-      {
-        path:"/movie/:id",
-        element:<Suspense fallback={<Loading/>}><Movie/></Suspense>
-      },
+     
+      
       {
         path:"/watch/:id",
         element:<Suspense fallback={<Loading/>}><Watch/></Suspense>

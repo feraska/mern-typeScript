@@ -21,10 +21,10 @@ const Cards:React.FC<{url:string,genre?:boolean}> = ({url,genre}) => {
         }
         const distance = list.current.getBoundingClientRect().x
         if(type === "left") {
-            list.current.style.transform = `translateX(${215+distance}px)`
+            list.current.style.transform = `translateX(${315+distance}px)`
             setNumberSlider((prev)=>prev-1)
         } if(type === "right") {
-            list.current.style.transform = `translateX(${-215+distance}px)`
+            list.current.style.transform = `translateX(${-315+distance}px)`
             setNumberSlider((prev)=>prev+1)
         }
    }

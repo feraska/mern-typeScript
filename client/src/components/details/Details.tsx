@@ -2,22 +2,21 @@ import { FaPlay } from "react-icons/fa"
 import "./details.scss"
 import { IoIosRemoveCircle, IoMdAdd } from "react-icons/io"
 import { SlDislike, SlLike } from "react-icons/sl"
-import React, {  useContext, useState } from "react"
+import React, {  useContext } from "react"
 import { card } from "../../hooks/useApi"
 import { AuthContext, actions } from "../../context/AuthContext"
 import usePut from "../../hooks/usePut"
 import { api } from "../../enums/api"
 import { MdOutlineExpandMore } from "react-icons/md"
-import { useNavigate } from "react-router-dom"
-import Movie from "../../pages/movie/Movie"
+import {  useLocation, useNavigate } from "react-router-dom"
 const Details:React.FC<{item:card,id:number,isList:boolean}> = ({item,id,isList}) => {
-     
     const {state,dispatch} = useContext(AuthContext)
     const {put} = usePut(api.addToList)
     const {put:addToLikes} = usePut(api.like)
     const {put:removeFromLikes} = usePut(`${api.dislike}`)
     const {put:remove} = usePut(`${api.removeFromList}`)
     const navigate = useNavigate()
+    const location = useLocation()
     const removeMovie = async()=> {
         try {
             await remove({image:id})
@@ -50,8 +49,9 @@ const Details:React.FC<{item:card,id:number,isList:boolean}> = ({item,id,isList}
         }
     }
     const showDetails = () => {
-      navigate(`/movie/${item.id}`)
+        navigate(`${location.pathname}?t=${item.id}`)
     }
+   
   
     return (
     

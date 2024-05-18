@@ -1,15 +1,18 @@
 import "./movie.scss"
 import useInfo from "../../hooks/useInfo"
 import { AiFillCloseCircle } from "react-icons/ai"
-import { useNavigate, useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom"
 const Movie = () => {
-    const id = useParams().id
+   // const id = useParams().id
+   const [search] = useSearchParams()
+   const location = useLocation()
+   const id = search.get("t")
     const {data:item} = useInfo(`https://api.themoviedb.org/3/movie/${id}`)
     const navigate = useNavigate()
     return(
         <div className="window">
             <div className="data">
-            <AiFillCloseCircle className="close" onClick={()=>navigate(-1)}/>
+            <AiFillCloseCircle className="close" onClick={()=>navigate(location.pathname)}/>
         <div className="movie">
             <div className="item">
             <h1>{item?.original_title}</h1>
