@@ -27,7 +27,7 @@ const Home = () => {
         <Navbar/>
         <div>
             <Playing url="https://api.themoviedb.org/3/discover/movie"/>
-            <Cards url="https://api.themoviedb.org/3/discover/movie"/>
+            <Cards url="https://api.themoviedb.org/3/discover/movie" />
         </div>
         <Footer/>
         </>

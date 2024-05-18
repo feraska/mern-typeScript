@@ -1,15 +1,15 @@
-import { useParams } from "react-router-dom"
-import Footer from "../../components/footer/Footer"
-import Navbar from "../../components/navbar/Navbar"
 import "./movie.scss"
 import useInfo from "../../hooks/useInfo"
+import { AiFillCloseCircle } from "react-icons/ai"
+import { useNavigate, useParams } from "react-router-dom"
 const Movie = () => {
     const id = useParams().id
     const {data:item} = useInfo(`https://api.themoviedb.org/3/movie/${id}`)
-    console.log(item)
+    const navigate = useNavigate()
     return(
-        <>
-        <Navbar/>
+        <div className="window">
+            <div className="data">
+            <AiFillCloseCircle className="close" onClick={()=>navigate(-1)}/>
         <div className="movie">
             <div className="item">
             <h1>{item?.original_title}</h1>
@@ -30,8 +30,9 @@ const Movie = () => {
             </div>
         </div>
         </div>
-        <Footer/>
-        </>
+        </div>
+        </div>
+        
     )
 }
 export default Movie

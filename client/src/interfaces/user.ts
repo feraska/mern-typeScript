@@ -1,11 +1,9 @@
-import { card } from "../hooks/useApi"
-
 export interface User {
     email:string,
     firstName:string,
     lastName:string,
     _id:string,
-    list:Array<card>,
-    likes:[]
+    list:Array<number>,
+    likes:Array<number>
 }
 export default User

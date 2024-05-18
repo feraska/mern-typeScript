@@ -1,8 +1,14 @@
 import axios, { AxiosError } from "axios"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import User from "../interfaces/user"
 
-const useGet = (url:string) => {
+interface o  {
+    get:()=>Promise<void>,
+    data:User | undefined,
+    error:boolean,
+    loading:boolean
+}
+const useGet =  (url:string):o => {
     const [error,setError] = useState(false)
     const [loading,setLoading] = useState(false)
     const [data,setData] = useState<User>()

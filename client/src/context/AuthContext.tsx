@@ -1,15 +1,15 @@
 import React, { createContext, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 import User from "../interfaces/user";
-import { card } from "../hooks/useApi";
+import { genere } from "../hooks/useApi";
 
-export interface share  {
-    genre:[],
-    likes:[],
-    list:Array<card>,
-    user?:User,
-    login:number,
-    loading:boolean
+export interface AppState   {
+    genre:Array<genere>;
+    likes:Array<number>;
+    list:Array<number>;
+    user?:User;
+    login:number;
+    loading:boolean;
 }
 
 export enum actions  {
@@ -24,12 +24,13 @@ export enum actions  {
    like = "like",
    dislike = "dislike"
 }
-export interface action {
+export interface action  {
     type:actions,
-    payload:[] | string | number | User
+    payload:Array<number> | string | number | User
+    
 }
   
-const INITIAL_STATE:share = {
+ const INITIAL_STATE:AppState = {
     genre:[],
     list:[],
     likes:[],
@@ -37,14 +38,18 @@ const INITIAL_STATE:share = {
     login:2,
     loading:false,
 }
+interface Props {
+    children: React.ReactNode;
+  }
 export const AuthContext = createContext<{
-    state: share;
-    dispatch: React.Dispatch<unknown>;
+    state: AppState;
+    dispatch: React.Dispatch<action>;
   }>({
     state:INITIAL_STATE,
     dispatch: () => null
   });
-export const AuthContextProvider:React.FC = ({children}) => {
+  
+export const AuthContextProvider:React.FC<Props> = ({children}) => {
     const [state, dispatch] = useReducer(AuthReducer,INITIAL_STATE)
     return(
 

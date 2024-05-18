@@ -1,7 +1,7 @@
 
-import { action,  actions,  share } from "./AuthContext";
+import { AppState, action,  actions } from "./AuthContext";
 
-const AuthReducer = (state:share, action:action) => {
+const AuthReducer = (state:AppState, action:action):AppState => {
     switch(action.type) {
         case actions.login:
           
@@ -12,7 +12,7 @@ const AuthReducer = (state:share, action:action) => {
         case actions.logout:
             return {
                 ...state,
-                user:null,
+                user:undefined,
                 login:2,
             }    
         case actions.user:
@@ -68,6 +68,8 @@ const AuthReducer = (state:share, action:action) => {
                         ...state,
                         list:[...state.list.filter((value)=>value!==action.payload)]
                     }
+                    default:
+                        return state
               
             }
        

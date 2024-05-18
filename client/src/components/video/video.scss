@@ -13,9 +13,25 @@
     gap: 10px;
     
     .show {
+        position: relative;
         height: 100%;
         width: 100%;
         cursor: pointer;
+        .volume {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+           font-size: 26px;
+           opacity: 0.5;
+           border-radius: 50%;
+           border: 1px solid white;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           &:hover {
+            opacity: 1;
+           }
+        }
         video {
             height: 100%;
             width: 100%;

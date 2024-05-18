@@ -1,12 +1,12 @@
-import React, {  lazy, useEffect, useRef, useState } from "react"
+import React, {  lazy, useEffect, useState } from "react"
 import { IoIosArrowForward,IoIosArrowBack } from "react-icons/io"
-import useApi from "../../hooks/useApi"
 const CardItem = lazy(()=> import("../cardItem/CardItem")) 
 import "./cards.scss"
+import useApi from "../../hooks/useApi"
 
-const Cards:React.FC<{url:string}> = ({url,genre}) => {
+const Cards:React.FC<{url:string,genre?:boolean}> = ({url,genre}) => {
     const {data,getData} = useApi(url)
-    const list = useRef<HTMLInputElement>()
+    const list = React.createRef<HTMLUListElement>()
     const [numberSlider,setNumberSlider] = useState(0)
     useEffect(()=> {
         const get = async()=> {
@@ -42,7 +42,7 @@ const Cards:React.FC<{url:string}> = ({url,genre}) => {
             ))
             } 
         </ul>
-        <IoIosArrowForward className={`icon right ${(numberSlider===data.results.filter((a)=>a?.genre_ids?.includes(+genre)).length)?"none":"visible"}`} onClick={()=>handleSlider("right")}/>
+        <IoIosArrowForward className={`icon right ${(numberSlider===data?.results.filter((a)=>a?.genre_ids?.includes(+genre)).length)?"none":"visible"}`} onClick={()=>handleSlider("right")}/>
         </div>
    
    

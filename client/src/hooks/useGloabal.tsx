@@ -3,11 +3,11 @@ import useApi from "./useApi"
 import { AuthContext, actions } from "../context/AuthContext"
 import useGet from "./useGet"
 import { api } from "../enums/api"
+
 const useGlobal = () => {
     const {state,dispatch} = useContext(AuthContext)
     const {data,getData} = useApi("https://api.themoviedb.org/3/genre/movie/list")
     const {data:user,get} = useGet(api.findUser)
-
     useEffect(()=> {
         const getAll = async()=> {
            try {

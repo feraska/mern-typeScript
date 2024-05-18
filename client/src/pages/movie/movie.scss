@@ -1,3 +1,35 @@
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
+.window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: auto; /* Enable scroll if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    background-color: rgba(134, 91, 91, 0.1); /* Black w/ opacity */
+    .data {
+        background-color: rgba(0,0,0,1);
+        position: relative;
+        width: 80%;
+        height: 80%;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+    .close {
+        font-size: 26px;
+        top: 20px;
+        position: absolute;
+        right: 20px;
+        cursor: pointer;
+    }
+}
 .movie {
     margin-top: 100px;
     margin-left: 150px;
@@ -25,4 +57,5 @@
             height: 200px;
         }
     }
+}
 }

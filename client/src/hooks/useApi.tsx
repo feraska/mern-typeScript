@@ -1,25 +1,25 @@
 import axios, { AxiosError } from "axios"
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 export interface play {
     dates:{
         maximum:Date,
         minimum:Date,
     },
-    results:[
-        {
-            backdrop_path:string,
-            original_title:string,
-            poster_path:string
-        }
-    ]
+    results:Array<card>
+    
 }
 export interface card {
     backdrop_path?:string,
     original_title?:string,
     poster_path?:string,
     adult?:boolean,
-    genre_ids?:[],
-    id:number
+    genre_ids?:Array<number>,
+    id:number,
+    original_name?:string
+}
+export interface genere {
+    id:number,
+    name:number
 }
 const useApi = (url:string) => {
     const [data,setData] = useState<play>()

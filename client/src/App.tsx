@@ -12,6 +12,7 @@ const  Login = lazy(()=> import('./pages/login/Login'))
 const Register = lazy(()=> import('./pages/register/Register')) 
 
 import Loading from './components/loading/Loading'
+import Watch from './pages/watch/Watch'
 const Movie = lazy(()=> import('./pages/movie/Movie')) 
 const Search = lazy(()=> import('./pages/search/Search')) 
 
@@ -63,6 +64,10 @@ function App() {
       {
         path:"/movie/:id",
         element:<Suspense fallback={<Loading/>}><Movie/></Suspense>
+      },
+      {
+        path:"/watch/:id",
+        element:<Suspense fallback={<Loading/>}><Watch/></Suspense>
       },
       {
         path:"*",
