@@ -9,6 +9,7 @@ import usePut from "../../hooks/usePut"
 import { api } from "../../enums/api"
 import { MdOutlineExpandMore } from "react-icons/md"
 import {  useLocation, useNavigate } from "react-router-dom"
+import Tooltip from "../tooltip/Tooltip"
 const Details:React.FC<{item:card,id:number,isList:boolean}> = ({item,id,isList}) => {
     const {state,dispatch} = useContext(AuthContext)
     const {put} = usePut(api.addToList)
@@ -59,10 +60,16 @@ const Details:React.FC<{item:card,id:number,isList:boolean}> = ({item,id,isList}
             <div className="clicks">
             <div className="buttons">
             <FaPlay className="icon-buttons" onClick={()=>navigate(`/watch/${item.id}`)}/>
+            <Tooltip text={!isList?"add":"remove"}>
             {!isList?<IoMdAdd className="icon-buttons" onClick={addHandler}/>:<IoIosRemoveCircle className="icon-buttons" onClick={removeMovie} />}
+            </Tooltip>
+            <Tooltip text={!state.likes.includes(item?.id)?"like":"dislike"}>
             {!state.likes.includes(item?.id)?<SlLike className="icon-buttons" onClick={()=>likeHandler(actions.like)}/>:<SlDislike className="icon-buttons" onClick={()=>likeHandler(actions.dislike)}/>}
+            </Tooltip>
             </div>
+            <Tooltip text="info">
             <MdOutlineExpandMore className="more" onClick={showDetails}/>
+            </Tooltip>
             </div>
             <div className="info">
                 <span>{item?.original_title?item?.original_title:item?.original_name}</span>

@@ -27,6 +27,9 @@ const Video:React.FC<{item:card,id?:number,isList?:boolean}> = ({item,id,isList}
     return(
         <div className="video">
             <div className="show" onClick={(e)=>getMovie(e)}>
+                        {/* <iframe autoCapitalize=""
+            src="https://www.youtube.com/embed/TYljxL4WeRo">
+            </iframe> */}
             <video src="https://res.cloudinary.com/dpel2vfvq/video/upload/v1715930615/video_bie12o.mp4" autoPlay loop muted={isMuted} />
             <div className="volume" ref={newRef}>
             {isMuted?<IoVolumeMuteOutline/>:<IoVolumeHighOutline />}
