@@ -29,10 +29,12 @@ const userSchema = new mongoose.Schema({
     likes: {
         type:Array,
         default:[],
-    }
+    },
+   
 },
 {
     timestamps:true
 }
 )
+
 export default mongoose.model("users",userSchema)

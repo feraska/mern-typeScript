@@ -8,4 +8,5 @@ router.put(api.addTolist,verifyToken,addToList)
 router.put(api.removeFromList,verifyToken,removeFromList)
 router.put(api.likes,verifyToken,addToLikes)
 router.put(api.dislike,verifyToken,removeFromLikes)
+
 export default router

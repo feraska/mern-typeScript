@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import "./watch.scss"
 const Watch = () => {
     const navigate = useNavigate()
+    
     return (
     <div className="player">
           <div className="back">

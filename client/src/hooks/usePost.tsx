@@ -7,6 +7,7 @@ const usePost = (url:string) => {
     const post = async(body)=> {
         try {
             setLoading(true)
+            
             const message = await axios.post(url,body,{
                 withCredentials:true
             })

@@ -8,7 +8,6 @@ import { IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5"
 const Video:React.FC<{item:card,id?:number,isList?:boolean}> = ({item,id,isList}) => {
     const navigate = useNavigate()
     const newRef = useRef(null);
-   
     const [isMuted,setIsMuted] = useState(true)
     const getMovie = (e) => {
         if(handleOutsideClick(e)) {

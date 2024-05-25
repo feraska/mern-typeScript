@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 import User from "../interfaces/user";
 import { genere } from "../hooks/useApi";
+import { Socket } from "socket.io-client";
 
 export interface AppState   {
     genre:Array<genere>;
@@ -10,6 +11,14 @@ export interface AppState   {
     user?:User;
     login:number;
     loading:boolean;
+    notification:Array<notification>,
+    socket:Socket
+}
+export interface notification {
+    msg?:string,
+    sender?:string,
+    _id:string,
+    createdAt:string
 }
 
 export enum actions  {
@@ -22,7 +31,10 @@ export enum actions  {
    user = "user",
    logout = "logout",
    like = "like",
-   dislike = "dislike"
+   dislike = "dislike",
+   addNotification = "addNotification",
+   getNotification = "getNotification",
+   socket = "socket"
 }
 export interface action  {
     type:actions,
@@ -37,6 +49,7 @@ export interface action  {
     user:undefined ,
     login:2,
     loading:false,
+    notification:[]
 }
 interface Props {
     children: React.ReactNode;

@@ -8,12 +8,15 @@ import { AuthContext, actions } from "../../context/AuthContext";
 import { PiSignOutLight } from "react-icons/pi";
 import useDelete from "../../hooks/useDelete";
 import { api } from "../../enums/api";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { format } from "timeago.js";
 const Navbar = () => {
     const [showSearch,setShowSearch] = useState(false)
     const [scrolled,setScolled] = useState(false)
     const {state,dispatch} = useContext(AuthContext)
     const {deletE} = useDelete(api.logoutMainServer)
     const navigate = useNavigate()
+  
     const handleChange = (e:FormEvent<HTMLInputElement>) => {
         navigate(`/search?q=${e.currentTarget.value}`)
     }
@@ -53,7 +56,7 @@ const Navbar = () => {
             {data.map((value,i)=>(
                 
                     <Link key={i} to={value.path}>
-                    <li >{value.text}</li>
+                    <li key={i}>{value.text}</li>
                     </Link>
              
             ))}
@@ -67,7 +70,28 @@ const Navbar = () => {
                 
                     <input className={showSearch?"visible":"none"} type="text" placeholder="type " onBlur={()=>setShowSearch(false)} onChange={(e)=>handleChange(e)}/>
                 </div>
-                
+                <div className="notification">
+                <div className="info"> 
+                <IoIosNotificationsOutline className="icon"/>
+                <span>{state?.notification?.length}</span>
+                </div>
+                <div className="message">
+                    <ul>
+                        {state?.notification?.map((item)=>(
+                             <li key={item._id}>
+                                <img src="https://res.cloudinary.com/dpel2vfvq/image/upload/v1710696637/fiverr/oezstpr0zovkzvju7zcg.jpg"/>
+                                <div className="msg">
+                             <span>{item?.msg}</span>
+                             <span>{format(item.createdAt)}</span>
+                             </div>
+                           </li>
+                        ))}
+                    </ul>
+                 
+
+                </div>
+                </div>
+
                 
             </div>
         </nav>

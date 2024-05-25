@@ -23,9 +23,7 @@ const Register = () => {
     }
     const handleRegister = async(e:FormEvent) => {
         e.preventDefault()
-       
         await post(user)
-       
         
     }
     if(state.login === 2) {

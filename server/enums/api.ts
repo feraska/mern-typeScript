@@ -1,6 +1,7 @@
 export enum api{
     auth = "/api/auth",
     user = "/api/user",
+    notification = "/api/notification",
     login = "/login",
     register = "/register",
     logout = "/logout",
@@ -8,5 +9,7 @@ export enum api{
     addTolist = "/addToList",
     removeFromList = "/removeFromList",
     likes = "/like",
-    dislike = "/dislike"
+    dislike = "/dislike",
+    getNotification = "/getNotification",
+    addNotification = "/addNotification"
 }

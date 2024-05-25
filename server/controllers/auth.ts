@@ -1,13 +1,13 @@
 import { NextFunction,Request,Response } from "express"
 import User from "../models/user"
 import { createError } from "../utils/error"
-import bcrypt, { genSaltSync } from "bcrypt"
+import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 export const register = async(req:Request,res:Response,next:NextFunction) => {
     try {
         const {email,firstName,lastName,password} = req.body
-        const salt = genSaltSync(16)
-        const hashedPassword = bcrypt.hashSync(password,salt)
+        const salt = await bcrypt.genSalt(16)
+        const hashedPassword = await bcrypt.hash(password,salt)
         await User.create({
             email,
             firstName,
@@ -28,7 +28,7 @@ export const login = async(req:Request,res:Response,next:NextFunction) => {
     if(!user) {
         return next(createError(400,"user not found"))
         }
-    const isCorrectPassword = bcrypt.compareSync(password,user.password)
+    const isCorrectPassword = await bcrypt.compare(password,user.password)
     if(!isCorrectPassword) {
         return next(createError(400,"the password not correct"))
     }

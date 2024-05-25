@@ -5,6 +5,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import authRouter from "./routes/auth"
 import userRouter from "./routes/user"
+import notificationRouter from "./routes/notification"
 import { api } from "./enums/api"
 dotenv.config()
 const app = express()
@@ -30,6 +31,7 @@ app.use(express.json())
 
 app.use(api.auth,authRouter)
 app.use(api.user,userRouter)
+app.use(api.notification,notificationRouter)
 //error handler
 app.use((err:any, req:Request, res:Response, next:NextFunction) => {
     const status = err.status || 500;

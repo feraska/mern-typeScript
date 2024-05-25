@@ -3,6 +3,11 @@ import { AppState, action,  actions } from "./AuthContext";
 
 const AuthReducer = (state:AppState, action:action):AppState => {
     switch(action.type) {
+        case actions.socket:
+            return {
+                ...state,
+                socket: action.payload
+            }
         case actions.login:
           
             return {
@@ -27,13 +32,23 @@ const AuthReducer = (state:AppState, action:action):AppState => {
                genre:action.payload
 
                }
-
+        case actions.addNotification:
+            return {
+                ...state,
+                notification:[...state.notification,action.payload]
+            }       
         case actions.get_likes: {
             return {
                 ...state,
                likes:action.payload
 
                }
+        }
+        case actions.getNotification: {
+            return {
+                ...state,
+                notification:action.payload
+            }
         }
         case actions.like: 
         return {

@@ -7,12 +7,12 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import useGlobal from "../../hooks/useGloabal";
 import { AuthContext } from "../../context/AuthContext";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 import Loading from "../../components/loading/Loading";
 import Movie from "../movie/Movie";
 
 const Home = () => {
-    const {state} = useContext(AuthContext)
+    const {state,dispatch} = useContext(AuthContext)
     const [search] = useSearchParams()
     const id = search.get("t")
    useGlobal()
@@ -24,7 +24,6 @@ const Home = () => {
         return<Navigate to={"/login"}/>
     }
    
-        
     return (
         <>
        {id&&<Movie/>}

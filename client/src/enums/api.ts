@@ -7,5 +7,8 @@ export enum api {
     addToList = "http://localhost:5000/api/user/addToList",
     removeFromList = "http://localhost:5000/api/user/removeFromList",
     like = "http://localhost:5000/api/user/like",
-    dislike = "http://localhost:5000/api/user/dislike"
+    dislike = "http://localhost:5000/api/user/dislike",
+    getNotification = "http://localhost:5000/api/notification/getNotification",
+    addNotification = "http://localhost:5000/api/notification/addNotification"
+
 }
