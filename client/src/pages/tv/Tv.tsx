@@ -10,6 +10,8 @@ const Playing = lazy(()=> import("../../components/playing/Playing"))
 import  "./tv.scss"
 import SelectGenre from "../../components/selectGenre/SelectGenre"
 import Movie from "../movie/Movie"
+import { isMobile } from "../../utils/getUser"
+import Vheader from "../../components/vheader/Vheader"
 const Tv = ()=> {
     const {state} = useContext(AuthContext)
     const [genre,setGenre] = useState("")
@@ -26,6 +28,7 @@ const Tv = ()=> {
         <>
         {id&&<Movie/>}
         <Navbar/>
+        {<Vheader/>}
         <SelectGenre setGenre={setGenre}/>
         <Playing url="https://api.themoviedb.org/3/discover/tv"/>
         <Cards url="https://api.themoviedb.org/3/discover/tv" genre={genre}/>

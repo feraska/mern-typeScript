@@ -4,7 +4,7 @@ import user from "./interfaces/user";
 dotenv.config()
 const io = new Server(Number(process.env.PORT),{
     cors:{
-        origin:["http://localhost:5173","http://localhost:5174"],
+        origin:["http://localhost:5173","http://localhost:5174","https://0tb1mjxb-5173.euw.devtunnels.ms"],
     },
   
     

@@ -10,6 +10,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { Navigate, useSearchParams } from "react-router-dom";
 import Loading from "../../components/loading/Loading";
 import Movie from "../movie/Movie";
+import { isMobile } from "../../utils/getUser";
+import Vheader from "../../components/vheader/Vheader";
 
 const Home = () => {
     const {state,dispatch} = useContext(AuthContext)
@@ -28,7 +30,7 @@ const Home = () => {
         <>
        {id&&<Movie/>}
         <Navbar/>
-        
+        {<Vheader/>}
         
         <div>
         

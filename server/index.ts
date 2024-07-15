@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser"
 import authRouter from "./routes/auth"
 import userRouter from "./routes/user"
 import notificationRouter from "./routes/notification"
+import bodyParser from "body-parser"
 import { api } from "./enums/api"
 dotenv.config()
 const app = express()
@@ -20,7 +21,7 @@ const connectToDataBase = async() => {
 }
 connectToDataBase()
 const corsOptions = {
-    origin: ['http://127.0.0.1:5173', 'http://localhost:5173'],
+    origin: ['http://127.0.0.1:5173', 'http://localhost:5173',"https://0tb1mjxb-5173.euw.devtunnels.ms"],
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers
     credentials: true, // Enable credentials (cookies, authorization headers, etc)
@@ -28,6 +29,8 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.json())
+app.use(bodyParser.json())
+
 
 app.use(api.auth,authRouter)
 app.use(api.user,userRouter)
@@ -42,6 +45,6 @@ app.use((err:any, req:Request, res:Response, next:NextFunction) => {
       message,
     });
   });
-app.listen(process.env.PORT,()=> {
+app.listen(Number(process.env.PORT),()=> {
     console.log(`the server run in port ${process.env.PORT}`)
 })

@@ -7,6 +7,8 @@ import { Navigate, useSearchParams } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 import SelectGenre from "../../components/selectGenre/SelectGenre"
 import Movie from "../movie/Movie"
+import { isMobile } from "../../utils/getUser"
+import Vheader from "../../components/vheader/Vheader"
 
 const Cards = lazy(()=> import("../../components/cards/Cards")) 
 const Playing = lazy(()=> import("../../components/playing/Playing")) 
@@ -29,6 +31,7 @@ const Movies = () => {
         <>
          {id&&<Movie/>}
         <Navbar/>
+        {<Vheader/>}
         <SelectGenre setGenre={setGenre}/>
             <Playing url="https://api.themoviedb.org/3/movie/now_playing"/>
             <Cards url="https://api.themoviedb.org/3/movie/now_playing" genre={genre}/>

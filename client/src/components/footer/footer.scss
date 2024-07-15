@@ -1,9 +1,14 @@
 footer {
-    margin-left: 150px;
+    
     margin-top: 100px;
     margin-bottom: 20px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
     .social-media {
         display: flex;
+        
         gap: 20px;
         color: #fff;
         svg {
@@ -19,6 +24,7 @@ footer {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr ;
         row-gap: 10px;
-        column-gap: 5px;
+        column-gap: 15px;
+        place-items: center;
     }
 }

@@ -9,12 +9,12 @@ const ListItem:React.FC<{id:string}> = ({id}) => {
     const {data:item} = useInfo(`https://api.themoviedb.org/3/movie/${id}`)
     const [hover,setHover] = useState(false)
     const navigate = useNavigate()
-    const getInfo = () => {
-        navigate(`/movie/${id}`)
-    }
+    // const getInfo = () => {
+    //     navigate(`/movie?t=${id}`)
+    // }
     return(
         <li className="list-item" onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)}>
-             <img alt="" src={`https://image.tmdb.org/t/p/w500/${item?.poster_path?item?.poster_path:item?.backdrop_path}` } onClick={getInfo} />
+             <img alt="" src={`https://image.tmdb.org/t/p/w500/${item?.poster_path?item?.poster_path:item?.backdrop_path}` }/>
              {hover&&<Video item={item} id={id} isList={true}/>}
         </li>
     )

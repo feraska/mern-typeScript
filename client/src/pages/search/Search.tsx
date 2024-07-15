@@ -8,6 +8,8 @@ import Loading from "../../components/loading/Loading"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import Movie from "../movie/Movie"
+import { isMobile } from "../../utils/getUser"
+import Vheader from "../../components/vheader/Vheader"
 const Search = () => {
     const [search] = useSearchParams()
     const id = search.get("t")
@@ -24,6 +26,7 @@ const Search = () => {
         <>
          {id&&<Movie/>}
         <Navbar/>
+        {<Vheader/>}
         <div className="filter">
             <h1>Search</h1>
             <ul>

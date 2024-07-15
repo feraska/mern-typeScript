@@ -66,10 +66,7 @@ function App() {
         path:"/watch/:id",
         element:<Suspense fallback={<Loading/>}><Watch/></Suspense>
       },
-      {
-        path:"*",
-        element:<p>404 Error - Nothing here...</p>
-    }
+     
     
     ])
   

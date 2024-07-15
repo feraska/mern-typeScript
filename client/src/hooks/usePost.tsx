@@ -9,8 +9,19 @@ const usePost = (url:string) => {
             setLoading(true)
             
             const message = await axios.post(url,body,{
-                withCredentials:true
+                withCredentials:true,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+             
             })
+            // const d = await fetch(url,{
+            //     method:"POST",
+            //     body:body,
+            //     credentials:"include"
+             
+            // })
+            // const message = await d.json()
             setMessage(message.data)
             setError(false)
             setLoading(false)

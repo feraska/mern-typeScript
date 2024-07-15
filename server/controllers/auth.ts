@@ -23,19 +23,26 @@ export const register = async(req:Request,res:Response,next:NextFunction) => {
 }
 export const login = async(req:Request,res:Response,next:NextFunction) => {
     try {
+    console.log("AAA")
     const {email,password} = req.body
+    console.log(email,password)
     const user = await User.findOne({email})
+    console.log(user)
     if(!user) {
         return next(createError(400,"user not found"))
         }
     const isCorrectPassword = await bcrypt.compare(password,user.password)
+    console.log(isCorrectPassword)
     if(!isCorrectPassword) {
         return next(createError(400,"the password not correct"))
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT!);
     res.cookie("access_token",token,{
-        httpOnly:true
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
     })
+    console.log("ok")
     return res.status(200).json("login successfully")
 
     } catch(err) {
@@ -45,7 +52,11 @@ export const login = async(req:Request,res:Response,next:NextFunction) => {
 }
 export const logout = (req:Request,res:Response,next:NextFunction) => {
     try {
-    res.clearCookie('access_token')
+    res.clearCookie('access_token',{
+        httpOnly:true,
+        secure:true,
+        sameSite:"none"
+    })
     return res.status(200).json("logout")
     } catch (err) {
         return next(createError(500,(err as Error).message))

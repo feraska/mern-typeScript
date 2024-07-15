@@ -1,6 +1,57 @@
-header {
-   
+@media screen and (max-width:768px) {
+    nav {
+      .left {
+        .logo {
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+      }
+        ul {
+            display: none;
+        }
+        .right {
+         
+          .search {
+           
+          }
+            
+        }
+    }
 }
+@media screen and (min-width:768px) {
+    nav {
+        .left {
+            .logo {
+                img {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        }
+        .h {
+            display: none;
+        }
+        ul {
+       display: flex;
+        }
+        .right {
+         
+            .search {
+              display: flex;
+            }
+              
+          }
+       
+    }
+}
+.h {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
 .scrolled {
     background-color: black;
 }
@@ -15,9 +66,11 @@ nav {
     
     align-items: center;
     .left {
+        
         display: flex;
         gap: 25px;
         align-items: center;
+        justify-content: center;
         .logout {
             font-size: 26px;
             cursor: pointer;
@@ -25,13 +78,13 @@ nav {
         .logo {
             margin-left: 25px;
             img {
-                width: 100px;
-                height: 100px;
+                // width: 100px;
+                // height: 100px;
             }
         }
         ul {
             list-style: none;
-            display: flex;
+          //  display: flex;
             gap: 20px;
             a {
                 font-size: 16px;
@@ -46,6 +99,7 @@ nav {
         }
     }
     .right {
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -117,7 +171,7 @@ nav {
            }
         }
         .search {
-            display: flex;
+         //   display: flex;
             gap: 5px;
             margin-right: 50px;
             background-color: transparent;
