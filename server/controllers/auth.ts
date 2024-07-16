@@ -23,16 +23,16 @@ export const register = async(req:Request,res:Response,next:NextFunction) => {
 }
 export const login = async(req:Request,res:Response,next:NextFunction) => {
     try {
-    console.log("AAA")
+ 
     const {email,password} = req.body
-    console.log(email,password)
+    
     const user = await User.findOne({email})
-    console.log(user)
+   
     if(!user) {
         return next(createError(400,"user not found"))
         }
     const isCorrectPassword = await bcrypt.compare(password,user.password)
-    console.log(isCorrectPassword)
+    
     if(!isCorrectPassword) {
         return next(createError(400,"the password not correct"))
     }
@@ -42,7 +42,7 @@ export const login = async(req:Request,res:Response,next:NextFunction) => {
         secure: true,
         sameSite: "none",
     })
-    console.log("ok")
+    
     return res.status(200).json("login successfully")
 
     } catch(err) {

@@ -19,7 +19,7 @@ const useGlobal = () => {
         if(state?.socket?.id){
             return
         }
-        const socket = io("ws://localhost:9000")
+        const socket = io("https://0tb1mjxb-9000.euw.devtunnels.ms/")
         socket?.on("connect",()=> {
             console.log("connected")
             dispatch({type:actions.socket,payload:socket})
